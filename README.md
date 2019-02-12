@@ -1,18 +1,18 @@
-# localtunnel
+# localtunnel-https
 
-[![Build Status](https://travis-ci.org/localtunnel/localtunnel.svg?branch=master)](https://travis-ci.org/localtunnel/localtunnel)
-
-localtunnel exposes your localhost to the world for easy testing and sharing! No need to mess with DNS or deploy just to have others test out your changes.
+localtunnel-https exposes your localhost to the world for easy testing and sharing! No need to mess with DNS or deploy just to have others test out your changes.
 
 Great for working with browser testing tools like browserling or external api callback services like twilio which require a public url for callbacks.
+
+Will connect to your local dev machine using tls (port 443)
 
 ## installation ##
 
 ```
-npm install -g localtunnel
+npm install -g localtunnel-https
 ```
 
-This will install the localtunnel module globally and add the 'lt' client cli tool to your PATH.
+This will install the localtunnel-https module globally and add the 'lt' client cli tool to your PATH.
 
 ## use ##
 
@@ -30,71 +30,15 @@ You can restart your local server all you want, ```lt``` is smart enough to dete
 
 Below are some common arguments. See `lt --help` for additional arguments
 
-* `--subdomain` request a named subdomain on the localtunnel server (default is random characters)
+* `-p, --port` Required, the port of the local host to connect on
+* `--subdomain` request a named subdomain on the localtunnel-https server (default is random characters)
 * `--local-host` proxy to a hostname other than localhost
+* `-o` Open window when tunnel successful
 
 You may also specify arguments via env variables.  E.x.
 
 ```
 PORT=3000 lt
 ```
-
-## API ##
-
-The localtunnel client is also usable through an API (for test integration, automation, etc)
-
-### localtunnel(port [,opts], fn)
-
-Creates a new localtunnel to the specified local `port`. `fn` will be called once you have been assigned a public localtunnel url. `opts` can be used to request a specific `subdomain`.
-
-```javascript
-var localtunnel = require('localtunnel');
-
-var tunnel = localtunnel(port, function(err, tunnel) {
-    if (err) ...
-
-    // the assigned public url for your tunnel
-    // i.e. https://abcdefgjhij.localtunnel.me
-    tunnel.url;
-});
-
-tunnel.on('close', function() {
-    // tunnels are closed
-});
-```
-
-### opts
-
-* `subdomain` A *string* value requesting a specific subdomain on the proxy server. **Note** You may not actually receive this name depending on availability.
-* `local_host` Proxy to this hostname instead of `localhost`. This will also cause the `Host` header to be re-written to this value in proxied requests.
-
-### Tunnel
-
-The `tunnel` instance returned to your callback emits the following events
-
-|event|args|description|
-|----|----|----|
-|request|info|fires when a request is processed by the tunnel, contains _method_ and _path_ fields|
-|error|err|fires when an error happens on the tunnel|
-|close||fires when the tunnel has closed|
-
-The `tunnel` instance has the following methods
-
-|method|args|description|
-|----|----|----|
-|close||close the tunnel|
-
-## other clients ##
-
-Clients in other languages
-
-*go* [gotunnelme](https://github.com/NoahShen/gotunnelme)
-
-*go* [go-localtunnel](https://github.com/localtunnel/go-localtunnel)
-
-## server ##
-
-See [localtunnel/server](//github.com/localtunnel/server) for details on the server that powers localtunnel.
-
 ## License ##
 MIT
