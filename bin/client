@@ -8,7 +8,7 @@ var argv = require('yargs')
     .option('h', {
         alias: 'host',
         describe: 'Upstream server providing forwarding',
-        default: 'https://proxy.reallysimplesystems.com',
+        default: 'https://localtunnel.me', 
     })
     .option('s', {
         alias: 'subdomain',
