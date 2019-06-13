@@ -1,12 +1,12 @@
 {
-  "author": "Roman Shtylman <shtylman@gmail.com>",
-  "name": "localtunnel",
+  "author": "Matt Treagus <matt@treagus.me>",
+  "name": "localtunnel-https",
   "description": "expose localhost to the world",
   "version": "1.10.1",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git://github.com/localtunnel/localtunnel.git"
+    "url": "git://github.com/matt127127/localtunnel-https.git"
   },
   "dependencies": {
     "axios": "0.17.1",
