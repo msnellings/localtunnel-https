@@ -23,8 +23,7 @@
   "bin": {
     "lt": "./bin/client"
   },
-  "main": "./client.js"
-},
+  "main": "./client.js",
   "engines": {
     "node": ">=8.3.0"
   }
