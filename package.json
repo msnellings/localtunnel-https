@@ -2,11 +2,18 @@
   "author": "Matt Treagus <matt@treagus.me>",
   "name": "localtunnel-https",
   "description": "expose localhost to the world",
-  "version": "1.10.1",
+  "version": "2.0.2",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git://github.com/msnellings/localtunnel-https.git"
+  },
+  "main": "./client.js",
+  "bin": {
+    "lt": "./bin/client.js"
+  },
+  "scripts": {
+    "test": "mocha --reporter list --timeout 60000 -- *.spec.js"
   },
   "dependencies": {
     "axios": "0.21.4",
@@ -17,13 +24,6 @@
   "devDependencies": {
     "mocha": "~9.1.1"
   },
-  "scripts": {
-    "test": "mocha --ui qunit --reporter list --timeout 10000 -- test/index.js"
-  },
-  "bin": {
-    "lt": "./bin/client"
-  },
-  "main": "./client.js",
   "engines": {
     "node": ">=8.3.0"
   }
